@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CalcNova - An advanced scientific calculator with a minimalistic design. Learn about us, explore services, and get in touch on this sleek platform.">
+    <meta name="keywords" content="scientific calculator, CalcNova, advanced calculator, minimalistic design, online math tool, services, contact">
+    <meta name="author" content="xAI">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="CalcNova - Advanced Scientific Calculator">
+    <meta property="og:description" content="Discover CalcNova: a modern calculator with powerful features. Learn about us, our services, and contact us today!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/calc-nova.html">
+    <meta property="og:image" content="https://example.com/calc-nova-preview.jpg">
+    <title>CalcNova - Advanced Scientific Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: #f4f7fa;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 20px;
+            z-index: 1000;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #2575fc;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #1a5ecc;
+        }
+        /* Hero Section with About */
+        .hero {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            padding: 100px 20px 80px;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: fadeIn 1s ease-out;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+        .hero .about-content {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+        /* Main Content Container */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+        /* Services Section */
+        .services {
+            padding: 60px 0;
+            background: #f4f7fa;
+            text-align: center;
+        }
+        .services h2 {
+            font-size: 2em;
+            color: #2575fc;
+            margin-bottom: 30px;
+        }
+        .calculator {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 520px;
+            margin: 0 auto 20px;
+            transition: transform 0.3s ease;
+        }
+        .calculator:hover {
+            transform: translateY(-5px);
+        }
+        .display {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: right;
+            font-size: 2em;
+            margin-bottom: 20px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+            color: #333;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+        }
+        button {
+            padding: 15px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            background: #2575fc;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        button:hover {
+            background: #1a5ecc;
+            transform: translateY(-2px);
+        }
+        button:active {
+            transform: translateY(1px);
+        }
+        .operator { background: #ff9500; }
+        .operator:hover { background: #e08500; }
+        .clear { background: #ff4d4d; }
+        .clear:hover { background: #e04343; }
+        .equals { background: #00cc66; }
+        .equals:hover { background: #00b359; }
+        .scientific { background: #6a11cb; }
+        .scientific:hover { background: #570f9e; }
+        .mode { background: #00b894; }
+        .mode:hover { background: #009e7a; }
+        .second { background: #f1c40f; }
+        .second:hover { background: #d4ac0d; }
+        .delete { background: #7f8c8d; }
+        .delete:hover { background: #636e72; }
+        /* Contact Section */
+        .contact {
+            padding: 60px 0;
+            background: white;
+            text-align: center;
+        }
+        .contact h2 {
+            font-size: 2em;
+            color: #2575fc;
+            margin-bottom: 20px;
+        }
+        .contact form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .contact input, .contact textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .contact button {
+            padding: 12px;
+            background: #2575fc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .contact button:hover {
+            background: #1a5ecc;
+        }
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        footer p {
+            font-size: 0.9em;
+        }
+        /* AdSense Styles */
+        .ad-left, .ad-right {
+            position: fixed;
+            top: 50%;
+            width: 160px;
+            height: 600px;
+            background: #ddd; /* Placeholder background */
+            transform: translateY(-50%);
+            z-index: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 1em;
+            color: #666;
+        }
+        .ad-left {
+            left: 10px;
+        }
+        .ad-right {
+            right: 10px;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero, .services, .contact, footer {
+            animation: fadeIn 0.8s ease-out;
+        }
+        /* Responsive Design */
+        @media (max-width: 1280px) {
+            .ad-left, .ad-right {
+                display: none; /* Hide ads on smaller desktops */
+            }
+        }
+        @media (max-width: 768px) {
+            nav ul { gap: 20px; }
+            .hero h1 { font-size: 2em; }
+            .hero p, .hero .about-content { font-size: 1em; }
+            .services h2, .contact h2 { font-size: 1.5em; }
+            .calculator { max-width: 400px; }
+            .buttons { grid-template-columns: repeat(4, 1fr); }
+            .display { font-size: 1.5em; padding: 15px; }
+            button { padding: 12px; font-size: 1em; }
+        }
+        @media (max-width: 480px) {
+            nav ul { flex-direction: column; gap: 10px; }
+            .hero { padding: 80px 15px; min-height: 80vh; }
+            .calculator { padding: 15px; }
+            .buttons { grid-template-columns: repeat(3, 1fr); }
+            .contact form { max-width: 100%; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- AdSense Script (Insert your own script here) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- AdSense Ads -->
+    <div class="ad-left">
+        <!-- Placeholder Ad (Replace with your AdSense code) -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:160px;height:600px"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="YYYYYYYYYY"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    <div class="ad-right">
+        <!-- Placeholder Ad (Replace with your AdSense code) -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:160px;height:600px"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="ZZZZZZZZZZ"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <header class="hero" id="home">
+        <h1>CalcNova</h1>
+        <p>A sleek, advanced scientific calculator designed for precision and simplicity. Explore its power today.</p>
+        <div class="about-content">
+            CalcNova is crafted by xAI to bring you a cutting-edge calculation experience. With a focus on minimalism and functionality, it’s perfect for students, engineers, and anyone who loves numbers.
+        </div>
+    </header>
+
+    <div class="content-wrapper">
+        <main>
+            <section class="services" id="services">
+                <h2>Our Services</h2>
+                <div class="calculator" aria-label="Scientific Calculator">
+                    <div class="display" id="display" role="textbox" aria-live="polite">0</div>
+                    <div class="buttons">
+                        <button class="clear" onclick="clearDisplay()" title="Clear all">C</button>
+                        <button class="scientific" id="sinBtn" onclick="appendScientific('sin')" title="Sine function">sin</button>
+                        <button class="scientific" id="cosBtn" onclick="appendScientific('cos')" title="Cosine function">cos</button>
+                        <button class="scientific" id="tanBtn" onclick="appendScientific('tan')" title="Tangent function">tan</button>
+                        <button class="scientific" onclick="appendScientific('lg')" title="Base-10 logarithm">lg</button>
+                        <button class="scientific" onclick="appendScientific('ln')" title="Natural logarithm">ln</button>
+                        
+                        <button class="mode" onclick="toggleDegRad()" title="Toggle degrees/radians">DEG</button>
+                        <button class="second" onclick="toggleSecond()" title="Secondary functions">2nd</button>
+                        <button class="operator" onclick="appendOperator('/')" title="Division">/</button>
+                        <button class="operator" onclick="appendOperator('*')" title="Multiplication">×</button>
+                        <button class="operator" onclick="appendOperator('-')" title="Subtraction">−</button>
+                        <button class="operator" onclick="appendOperator('+')" title="Addition">+</button>
+                        
+                        <button class="scientific" onclick="appendNumber('3.14159')" title="Pi constant">π</button>
+                        <button class="scientific" onclick="appendNumber('2.71828')" title="Euler's number">e</button>
+                        <button class="scientific" onclick="appendScientific('sqrt')" title="Square root">√x</button>
+                        <button class="scientific" onclick="appendScientific('factorial')" title="Factorial">x!</button>
+                        <button class="scientific" onclick="appendScientific('reciprocal')" title="Reciprocal">1/x</button>
+                        <button class="operator" onclick="appendOperator('^')" title="Exponentiation">xʸ</button>
+                        
+                        <button onclick="appendNumber('7')" title="Number 7">7</button>
+                        <button onclick="appendNumber('8')" title="Number 8">8</button>
+                        <button onclick="appendNumber('9')" title="Number 9">9</button>
+                        <button onclick="appendNumber('4')" title="Number 4">4</button>
+                        <button onclick="appendNumber('5')" title="Number 5">5</button>
+                        <button onclick="appendNumber('6')" title="Number 6">6</button>
+                        
+                        <button onclick="appendNumber('1')" title="Number 1">1</button>
+                        <button onclick="appendNumber('2')" title="Number 2">2</button>
+                        <button onclick="appendNumber('3')" title="Number 3">3</button>
+                        <button onclick="appendNumber('0')" title="Number 0">0</button>
+                        <button onclick="appendNumber('.')" title="Decimal point">.</button>
+                        <button class="scientific" onclick="appendScientific('percent')" title="Percentage">%</button>
+                        
+                        <button class="delete" onclick="deleteLast()" title="Delete last digit">DEL</button>
+                        <button class="equals" onclick="calculate()" title="Calculate result">=</button>
+                    </div>
+                </div>
+                <p>Experience advanced calculations with ease—trigonometry, logarithms, and more, all in one place.</p>
+            </section>
+
+            <section class="contact" id="contact">
+                <h2>Contact Us</h2>
+                <form action="#" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 CalcNova by xAI. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let display = document.getElementById('display');
+        let currentInput = '0';
+        let previousInput = '';
+        let operation = null;
+        let isDeg = true;
+        let isSecond = false;
+
+        function appendNumber(number) {
+            if (currentInput === '0' && number !== '.') {
+                currentInput = number;
+            } else {
+                currentInput += number;
+            }
+            updateDisplay();
+        }
+
+        function appendOperator(op) {
+            if (operation && currentInput !== '') {
+                calculate();
+            }
+            previousInput = currentInput;
+            currentInput = '';
+            operation = op;
+            updateDisplay();
+        }
+
+        function appendScientific(func) {
+            const num = parseFloat(currentInput);
+            if (func === 'sqrt') {
+                if (num < 0) {
+                    alert("Error: Square root of negative number!");
+                    clearDisplay();
+                    return;
+                }
+                currentInput = Math.sqrt(num).toString();
+            } else if (func === 'sin') {
+                const angle = isDeg ? num * Math.PI / 180 : num;
+                currentInput = isSecond ? Math.asin(num) / (isDeg ? Math.PI / 180 : 1) : Math.sin(angle);
+                currentInput = currentInput.toString();
+            } else if (func === 'cos') {
+                const angle = isDeg ? num * Math.PI / 180 : num;
+                currentInput = isSecond ? Math.acos(num) / (isDeg ? Math.PI / 180 : 1) : Math.cos(angle);
+                currentInput = currentInput.toString();
+            } else if (func === 'tan') {
+                const angle = isDeg ? num * Math.PI / 180 : num;
+                currentInput = isSecond ? Math.atan(num) / (isDeg ? Math.PI / 180 : 1) : Math.tan(angle);
+                currentInput = currentInput.toString();
+            } else if (func === 'lg') {
+                if (num <= 0) {
+                    alert("Error: Logarithm of non-positive number!");
+                    clearDisplay();
+                    return;
+                }
+                currentInput = Math.log10(num).toString();
+            } else if (func === 'ln') {
+                if (num <= 0) {
+                    alert("Error: Natural logarithm of non-positive number!");
+                    clearDisplay();
+                    return;
+                }
+                currentInput = Math.log(num).toString();
+            } else if (func === 'factorial') {
+                if (!Number.isInteger(num) || num < 0) {
+                    alert("Error: Factorial requires a non-negative integer!");
+                    clearDisplay();
+                    return;
+                }
+                currentInput = factorial(num).toString();
+            } else if (func === 'reciprocal') {
+                if (num === 0) {
+                    alert("Error: Reciprocal of zero is undefined!");
+                    clearDisplay();
+                    return;
+                }
+                currentInput = (1 / num).toString();
+            } else if (func === 'percent') {
+                if (previousInput && operation) {
+                    const prevNum = parseFloat(previousInput);
+                    currentInput = (prevNum * num / 100).toString();
+                } else {
+                    currentInput = (num / 100).toString();
+                }
+            }
+            updateDisplay();
+        }
+
+        function factorial(n) {
+            if (n === 0 || n === 1) return 1;
+            return n * factorial(n - 1);
+        }
+
+        function deleteLast() {
+            if (currentInput.length > 1) {
+                currentInput = currentInput.slice(0, -1);
+            } else {
+                currentInput = '0';
+            }
+            updateDisplay();
+        }
+
+        function toggleDegRad() {
+            isDeg = !isDeg;
+            document.querySelector('.mode').textContent = isDeg ? 'DEG' : 'RAD';
+        }
+
+        function toggleSecond() {
+            isSecond = !isSecond;
+            document.getElementById('sinBtn').textContent = isSecond ? 'sin⁻¹' : 'sin';
+            document.getElementById('cosBtn').textContent = isSecond ? 'cos⁻¹' : 'cos';
+            document.getElementById('tanBtn').textContent = isSecond ? 'tan⁻¹' : 'tan';
+            document.querySelector('.second').style.backgroundColor = isSecond ? '#d4ac0d' : '#f1c40f';
+        }
+
+        function calculate() {
+            if (!operation || !previousInput || currentInput === '') return;
+
+            let result;
+            const num1 = parseFloat(previousInput);
+            const num2 = parseFloat(currentInput);
+
+            switch (operation) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '−':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    if (num2 === 0) {
+                        alert("Error: Division by zero!");
+                        clearDisplay();
+                        return;
+                    }
+                    result = num1 / num2;
+                    break;
+                case '^':
+                    result = Math.pow(num1, num2);
+                    break;
+                default:
+                    return;
+            }
+
+            currentInput = result.toString();
+            operation = null;
+            previousInput = '';
+            updateDisplay();
+        }
+
+        function clearDisplay() {
+            currentInput = '0';
+            previousInput = '';
+            operation = null;
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            if (operation && previousInput) {
+                display.textContent = `${previousInput} ${operation} ${currentInput || ''}`;
+            } else {
+                display.textContent = currentInput;
+            }
+        }
+    </script>
+</body>
+</html>
